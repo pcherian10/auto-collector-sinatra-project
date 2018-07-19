@@ -1,0 +1,6 @@
+class AutosController < ApplicationController
+
+
+
+
+end
