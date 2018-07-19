@@ -1,0 +1,12 @@
+<h1>Edit <%= @garage.name %></h1>
+
+<form action = "/garages/<%=@garage.id %>" method="POST">
+  <label> Garage Name </label>
+  <input type="text" name="name" value="<%=@garage.name %>"> </br>
+
+  <label> Garage Capacity </label>
+  <input type="number" name="capacity" value="<%=@garage.capacity %>"> </br>
+
+  <input type="submit" value="Update">
+
+</form>
