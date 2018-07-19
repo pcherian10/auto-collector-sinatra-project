@@ -31,11 +31,19 @@ class AutosController < ApplicationController
   end
 
   get "/garages/:id" do
-
+    redirect_if_not_logged_in
+    @garage = Garage.find(params[:id)])
+    erb :'garages/show'
   end
 
   post "/garages" do
+    redirect_if_not_logged_in
 
+    unless Garage.valid_params?(params)
+      redirect "/garages/new?error=invalid garage"
+    end
+    Garage.create(params)
+    redirect "/garages"
   end
 
 end
