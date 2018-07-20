@@ -1,0 +1,12 @@
+<%= @garage.name %><br />
+<%= @garage.capacity %> <br />
+
+<h2> Autos </h2>
+<ul>
+  <% @garage.autos.each do |auto| %>
+    <li><a href="/autos/<%=auto.id%>"><%= auto.name %></a></li>
+  <% end%>
+</ul>
+<a href="/garages/<%=@garage.id%>/edit">Edit</a>
+<br />
+<br />
