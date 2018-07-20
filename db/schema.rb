@@ -11,16 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180720090537) do
+ActiveRecord::Schema.define(version: 20180720132431) do
 
   create_table "autos", force: :cascade do |t|
-    t.string "name"
-    t.string "manufacturer"
+    t.string  "name"
+    t.string  "manufacturer"
+    t.integer "garage_id"
   end
 
   create_table "garages", force: :cascade do |t|
     t.string  "name"
     t.integer "capacity"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|

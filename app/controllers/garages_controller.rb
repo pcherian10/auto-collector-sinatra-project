@@ -3,7 +3,7 @@ class GaragesController < ApplicationController
     get "/garages" do
       redirect_if_not_logged_in
       @garages = Garage.all
-      erb :'garage/index'
+      erb :'garages/index'
     end
 
     get "/garages/new" do
