@@ -32,7 +32,7 @@ class AutosController < ApplicationController
 
   get "/garages/:id" do
     redirect_if_not_logged_in
-    @garage = Garage.find(params[:id)])
+    @garage = Garage.find(params[:id])
     erb :'garages/show'
   end
 
