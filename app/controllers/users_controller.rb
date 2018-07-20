@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       @user = User.create(:username => params[:username], :password => params[:password])
       session[:user_id] = @user.id
       redirect '/garages'
+    end
   end
 
   get '/login' do
