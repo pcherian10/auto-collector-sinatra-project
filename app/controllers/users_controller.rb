@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       redirect '/garages'
     end
 
-    @user = User.find(parms[:id])
+    @user = User.find(params[:id])
     if !@user.nil? && @user == current_user
       erb :'users/show'
     else
