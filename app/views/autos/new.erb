@@ -9,7 +9,7 @@
 
   <label> Which garage is this auto assigned to ? </label>
   <select name = "garage_id">
-    <% current_user.garages.each do |bag| %>
+    <% current_user.garages.each do |garage| %>
       <option value = <%=garage.id %>><%= garage.name %></option>
     <% end %>
   </select>
