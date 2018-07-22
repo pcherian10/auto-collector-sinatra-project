@@ -2,7 +2,17 @@
 
 <form action = "/autos/<%=@auto.id %>" method = "POST">
   <lable> Auto Name </label>
-  <input type = "text" name = "name" value = "<%= auto.name %>"> </br>
+  <input type = "text" name = "name" value = "<%= @auto.name %>"> </br>
 
   <label> Auto Manufacturer </label>
   <input type = "text" name = "manufacturer" value = "<%=@auto.manufacturer%>"> </br>
+
+  <label> Which garage location is this auto assigned to? </label>
+  <select name = "garage_id">
+    <%current_user.garages.each do |garage| %>
+      <option value = <%= garage.id %> <%= "selected" if garage.id == @auto.garage.id %> ><%= garage.name %></option>
+    <% end %>
+  </select>
+
+  <input type = "submit" value = "Update">
+</form>
