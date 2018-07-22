@@ -12,3 +12,18 @@
         <a href="/autos/new"> Create Auto </a>
         <a href="/logout"> Log Out </a>
         <p>Welcome, <%=current_user.username %></p>
+
+        <% else %>
+          <a href="/signup">Sign Up</a>
+          <a href="/login"> Sign In </a>
+        <%end %>
+
+      </nav>
+      <div class="container">
+        <h1>Auto Adder</h1>
+        <% if !@error_message.nil? %>
+        <div class="alert alert-warning">
+          <%= @error_message %>
+        </div>
+      <% end %>
+      
