@@ -1,2 +1,6 @@
 <%= @auto.name %><br />
-<%= @club.manufacturer %><br />
+<%= @auto.manufacturer %><br />
+Automobile: <a href = "/autos/<%=@auto.garage.id %>"><%= @auto.garage.name %></a> <br />
+<a href = "/autos/<%=@auto.id%>/edit">Edit</a>
+<br />
+<br />
