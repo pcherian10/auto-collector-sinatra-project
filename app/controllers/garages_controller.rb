@@ -27,7 +27,7 @@ class GaragesController < ApplicationController
         redirect "/garages/#{@garage.id}/edit?error=invalid garage"
       end
       @garage.update(params.select{|k|k=="name" || k=="capacity"})
-      redirect "/bags/#{@garage.id}"
+      redirect "/garages/#{@garage.id}"
     end
 
     get "/garages/:id" do
