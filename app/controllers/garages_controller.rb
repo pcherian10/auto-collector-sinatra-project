@@ -2,7 +2,7 @@ class GaragesController < ApplicationController
 
     get "/garages" do
       redirect_if_not_logged_in
-      @garages = Garage.all
+      @garages = current_user.garages
       erb :'garages/index'
     end
 
@@ -42,7 +42,8 @@ class GaragesController < ApplicationController
       unless Garage.valid_params?(params)
         redirect "/garages/new?error=invalid garage"
       end
-      Garage.create(params)
+      @new_garage = Garage.create(params)
+      current_user.garages << @new_garage
       redirect "/garages"
     end
 end

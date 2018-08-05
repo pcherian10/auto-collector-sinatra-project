@@ -41,9 +41,9 @@ class UsersController < ApplicationController
   end
 
   post '/login' do
-    user = User. find_by(:username => params[:username])
+    user = User.find_by(:username => params[:username])
     if user && user.authenticate(params[:password])
-      session[:user_id] = user_id
+      session[:user_id] = user.id
       redirect "/garages"
     else
       redirect to '/signup'
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
       session.destroy
       redirect to '/login'
     else
-      redirecct to '/'
+      redirect to '/'
     end
   end
 

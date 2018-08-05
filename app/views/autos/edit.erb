@@ -1,11 +1,12 @@
 <h1>Edit <%= @auto.name %></h1>
 
 <form action = "/autos/<%=@auto.id %>" method = "POST">
-  <lable> Auto Name </label>
-  <input type = "text" name = "name" value = "<%= @auto.name %>"> </br>
 
-  <label> Auto Manufacturer </label>
+  <label> Car Manufacturer </label>
   <input type = "text" name = "manufacturer" value = "<%=@auto.manufacturer%>"> </br>
+
+  <label> Model Name </label>
+  <input type = "text" name = "name" value = "<%= @auto.name %>"> </br>
 
   <label> Which garage location is this auto assigned to? </label>
   <select name = "garage_id">

@@ -1,13 +1,13 @@
-<h1> Add a New Auto </h1>
+<h3> Add a New Auto </h3>
 
 <form action = "/autos" method = "POST">
-  <label> Auto Name </label>
-  <input type = "text" name = "name"> </br>
-
-  <label> Auto Manufacturer </label>
+  <label> Car Manufacturer </label>
   <input type = "text" name = "manufacturer"> </br>
 
-  <label> Which garage is this auto assigned to ? </label>
+  <label> Model Name </label>
+  <input type = "text" name = "name"> </br>
+
+  <label> Which garage is this car assigned to ? </label>
   <select name = "garage_id">
     <% current_user.garages.each do |garage| %>
       <option value = <%=garage.id %>><%= garage.name %></option>
