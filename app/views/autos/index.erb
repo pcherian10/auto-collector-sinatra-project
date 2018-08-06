@@ -1,6 +1,12 @@
+<% if @garage %>
+  <h1><%= @garage.name %>'s Autos</h1>
+<% else %>
+  <h1>All Cars</h1>
+<% end %>
+
 <% @autos.each do |auto| %>
-  <%= auto.name %><br />
   <%= auto.manufacturer %><br />
+  <%= auto.name %><br />
   <a href="/autos/<%= auto.id%>/edit">Edit</a>
   <br />
   <br />

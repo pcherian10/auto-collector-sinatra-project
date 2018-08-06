@@ -10,7 +10,6 @@ class GaragesController < ApplicationController
       redirect_if_not_logged_in
       @error_message = params[:error]
       erb :'garages/new'
-
     end
 
     get "/garages/:id/edit" do

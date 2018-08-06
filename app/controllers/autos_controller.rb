@@ -6,6 +6,13 @@ class AutosController < ApplicationController
     erb :'autos/index'
   end
 
+  get "/garages/:id/autos" do
+    redirect_if_not_logged_in
+    @garage = Garage.find(params[:id])
+    @autos = @garage.autos
+    erb :'autos/index'
+  end
+
   get "/autos/new" do
     redirect_if_not_logged_in
     @error_message = params[:error]
