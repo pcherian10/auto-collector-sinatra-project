@@ -4,8 +4,8 @@
 <% end %>
 
 <% @garages.each do |garage| %>
-  <a href = "/garages/<%= garage.id %>/autos"><%= garage.name %><br /></a>
-  <a href = "/garages/<%= garage.id %>/edit">Edit<br /></a>
+  <a href = "/garages/<%= garage.id %>/autos"><%= garage.name%> - View Inventory<br /></a>
+  <a href = "/garages/<%= garage.id %>/edit">Edit Garage Attributes<br /></a>
   <br />
   <br />
 <% end %>

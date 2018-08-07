@@ -4,10 +4,14 @@
   <h4>All Cars</h4>
 <% end %>
 
-<% @autos.each do |auto| %>
-  <%= auto.manufacturer %><br />
-  <%= auto.name %><br />
-  <a href="/autos/<%= auto.id%>/edit">Edit</a>
-  <br />
-  <br />
+<% if @autos.empty? %>
+  <h5>Looks like you haven't added any autos! Add one by clicking the link above!</h5>
+<% else %>
+  <% @autos.each do |auto| %>
+    <%= auto.manufacturer %>
+    <%= auto.name %>
+    <a href="/autos/<%= auto.id%>/edit"> - Edit</a>
+    <br />
+    <br />
+  <% end %>
 <% end %>
