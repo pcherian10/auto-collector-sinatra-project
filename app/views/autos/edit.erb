@@ -1,4 +1,4 @@
-<h1>Edit <%= @auto.name %></h1>
+<h3>Edit car details below: </h3>
 
 <form action = "/autos/<%=@auto.id %>" method = "POST">
 
@@ -16,4 +16,11 @@
   </select>
 
   <input type = "submit" value = "Update">
+
+</form>
+
+
+<form action="/autos/<%= @auto.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete this Auto">
 </form>

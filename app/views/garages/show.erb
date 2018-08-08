@@ -1,12 +1,16 @@
-<h4>Garage Name</h4><%= @garage.name %><br />
-<h4>Garage Capacity</h4><%= @garage.capacity %> <br />
-
-<h2> Autos </h2>
+<h4>Garage Name:<%= @garage.name %></h4>
+<h4>Garage Capacity: <%= @garage.capacity %></h4>
+<h4>Autos in this Garage: </h4>
 <ul>
   <% @garage.autos.each do |auto| %>
     <li><a href="/autos/<%=auto.id%>"><%= auto.name %></a></li>
   <% end%>
 </ul>
-<a href="/garages/<%=@garage.id%>/edit">Edit</a>
+<a href="/garages/<%=@garage.id%>/edit">Edit this Garage</a>
 <br />
 <br />
+
+<form action="/garages/<%= @garage.id %>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete this Garage">
+</form>

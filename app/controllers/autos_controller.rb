@@ -52,4 +52,14 @@ class AutosController < ApplicationController
     @autos = @garage.autos
     erb  :'/autos/index'
   end
+
+  delete '/autos/:id/delete' do #delete action
+    @auto = Auto.find_by_id(params[:id])
+    @garage = @auto.garage
+    @auto.delete
+    @autos = @garage.autos
+    erb :'autos/index'
+  end
+
+
 end

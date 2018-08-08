@@ -45,4 +45,12 @@ class GaragesController < ApplicationController
       current_user.garages << @new_garage
       redirect "/garages"
     end
+
+    delete '/garages/:id/delete' do #delete action
+      @garage = Garage.find_by_id(params[:id])
+      @garage.delete
+      redirect to '/garages'
+    end
+
+
 end
