@@ -47,7 +47,9 @@ class AutosController < ApplicationController
     unless Auto.valid_params?(params)
       redirect "/autos/new?error=invalid auto"
     end
-    Auto.create(params)
-    redirect "/autos"
+    @auto = Auto.create(params)
+    @garage = @auto.garage
+    @autos = @garage.autos
+    erb  :'/autos/index'
   end
 end
