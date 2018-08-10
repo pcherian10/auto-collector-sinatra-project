@@ -9,8 +9,3 @@
 <a href="/garages/<%=@garage.id%>/edit">Edit this Garage</a>
 <br />
 <br />
-
-<form action="/garages/<%= @garage.id %>/delete" method="post">
-  <input id="hidden" type="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete this Garage">
-</form>
