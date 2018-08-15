@@ -3,7 +3,13 @@ class Garage < ActiveRecord::Base
   belongs_to :user
 
   def self.valid_params?(params)
-    return !params[:name].empty? && !params[:capacity].empty?
+    !params[:name].empty? && !params[:capacity].empty?
   end
+
+  def self.valid_user?(params, current_user)
+      @garage = self.find_by_id(params)
+      @garage.user == current_user
+  end
+
 
 end

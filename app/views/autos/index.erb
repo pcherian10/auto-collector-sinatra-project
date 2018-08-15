@@ -6,7 +6,7 @@
 
 <% if @autos.empty? %>
   <h5>Looks like you haven't added any autos! Add one by clicking the link above!</h5>
-
+<% binding.pry %>
 <% elsif @autos.length > @garage.capacity %>
   <h5> This Garage is full, please choose another garage! </h5>
   <% @autos.last.delete %>

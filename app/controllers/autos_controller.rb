@@ -8,9 +8,13 @@ class AutosController < ApplicationController
 
   get "/garages/:id/autos" do
     redirect_if_not_logged_in
-    @garage = Garage.find(params[:id])
-    @autos = @garage.autos
-    erb :'autos/index'
+    if Garage.valid_user?(params[:id], current_user)
+      @garage = Garage.find(params[:id])
+      @autos = @garage.autos
+      erb :'autos/index'
+    else
+      redirect to '/garages'
+    end
   end
 
   get "/autos/new" do
@@ -22,8 +26,12 @@ class AutosController < ApplicationController
   get "/autos/:id/edit" do
     redirect_if_not_logged_in
     @error_message = params[:error]
-    @auto = Auto.find(params[:id])
-    erb :'autos/edit'
+    if Auto.valid_user?(params[:id], current_user)
+      @auto = Auto.find(params[:id])
+      erb :'autos/edit'
+    else
+      redirect to '/garages'
+    end
   end
 
   post "/autos/:id" do
@@ -38,8 +46,12 @@ class AutosController < ApplicationController
 
   get "/autos/:id" do
     redirect_if_not_logged_in
-    @auto = Auto.find(params[:id])
-    erb :'autos/show'
+    if Auto.valid_user?(params[:id], current_user)
+      @auto = Auto.find(params[:id])
+      erb :'autos/show'
+    else
+      redirect to "/garages"
+    end
   end
 
   post "/autos" do

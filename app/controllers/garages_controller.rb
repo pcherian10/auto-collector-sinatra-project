@@ -16,7 +16,11 @@ class GaragesController < ApplicationController
       redirect_if_not_logged_in
       @error_message = params[:error]
       @garage = Garage.find(params[:id])
-      erb :'garages/edit'
+      if Garage.valid_user?(params[:id], current_user)
+        erb :'garages/edit'
+      else
+        redirect "/garages"
+      end
     end
 
     post "/garages/:id" do
@@ -25,19 +29,26 @@ class GaragesController < ApplicationController
       unless Garage.valid_params?(params)
         redirect "/garages/#{@garage.id}/edit?error=invalid garage"
       end
-      @garage.update(params.select{|k|k=="name" || k=="capacity"})
-      redirect "/garages/#{@garage.id}"
+      if Garage.valid_user?(params[:id], current_user)
+        @garage.update(params.select{|k|k=="name" || k=="capacity"})
+        redirect "/garages/#{@garage.id}"
+      else
+        redirect "/garages"
+      end
     end
 
     get "/garages/:id" do
       redirect_if_not_logged_in
       @garage = Garage.find(params[:id])
-      erb :'garages/show'
+      if Garage.valid_user?(params[:id], current_user)
+        erb :'garages/show'
+      else
+        redirect "/garages"
+      end
     end
 
     post "/garages" do
       redirect_if_not_logged_in
-
       unless Garage.valid_params?(params)
         redirect "/garages/new?error=invalid garage"
       end
@@ -47,10 +58,12 @@ class GaragesController < ApplicationController
     end
 
     delete '/garages/:id/delete' do #delete action
-      @garage = Garage.find_by_id(params[:id])
-      @garage.delete
-      redirect to '/garages'
+        @garage = Garage.find_by_id(params[:id])
+        @garage.delete
+        redirect to '/garages'
     end
+
+
 
 
 end

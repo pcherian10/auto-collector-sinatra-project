@@ -4,7 +4,6 @@ class UsersController < ApplicationController
     if !logged_in?
       redirect '/garages'
     end
-
     @user = User.find(params[:id])
     if !@user.nil? && @user == current_user
       erb :'users/show'
@@ -25,9 +24,13 @@ class UsersController < ApplicationController
     if params[:username] == "" || params[:password] == ""
       redirect to '/signup'
     else
-      @user = User.create(:username => params[:username], :password => params[:password])
-      session[:user_id] = @user.id
-      redirect '/garages'
+      if User.valid_params(params)
+        @user = User.create(:username => params[:username], :password => params[:password])
+        session[:user_id] = @user.id
+        redirect '/garages'
+      else
+        redirect to '/signup'
+      end
     end
   end
 
